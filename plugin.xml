@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <!-- commands -->
+   <extension point="org.eclipse.ui.commands">
+      <command
+         id="com.sohelper.getanswer"
+         name="Ask me">
+      </command>
+   </extension>
+   
+   <!-- menus -->
+   <extension point="org.eclipse.ui.menus">
+      <menuContribution
+         locationURI="popup:org.eclipse.ui.popup.any?after=additions">
+         <command
+            commandId="com.sohelper.getanswer"
+            label="Ask me"
+            style="push">
+         </command>
+      </menuContribution>
+   </extension>
+
+   <!-- handlers -->
+   <extension point="org.eclipse.ui.handlers">
+      <handler
+         class="com.sohelper.handlers.SampleHandler"
+         commandId="com.sohelper.getanswer">
+      </handler>
+   </extension>
+
+</plugin>
