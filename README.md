@@ -14,7 +14,13 @@ Clicking on "OK" will open a dialog that includes answers that links to Stack Ov
 
 Pressing on "Next" and "Previous" will take you to the next/previous answers.
 
-## \/\/TODO
+## Installation
+
+* Help > Install New Software... > Add
+* Insert "https://raw.githubusercontent.com/MarounMaroun/SO-Eclipse-Plugin/master/site.xml"
+* Click OK and proceed with the installation process
+
+## //TODO
 
 * Improve UI
 * Link to the post that's being viewed
