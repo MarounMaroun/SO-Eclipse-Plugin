@@ -4,15 +4,17 @@ Enables you to get answers from Stack Overflow directly to Eclipse!
 
 ## Features
 
-Right click on the editor, then select "Ask me". The following window will appear:
+Right click on the editor, then select "Ask me":
 
-![Ask me](http://s3.postimg.org/3zn2z61c3/ask_me.png)
+![Ask me](/images/ask_me.png)
 
-Clicking on "OK" will open a dialog that includes answers that links to Stack Overflow from Google:
+The "SO ready to help" dialog should appear:
 
-![Answers](http://s30.postimg.org/ymbwji0nl/answers.png)
+![SO ready to help](/images/how_to.png)
 
-Pressing on "Next" and "Previous" will take you to the next/previous answers.
+After clicking "OK" the answers dialog will open:
+
+![Answers dialog](/images/answers.png)
 
 ## Installation
 
