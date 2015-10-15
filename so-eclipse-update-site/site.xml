@@ -4,7 +4,9 @@
       Eclipse plugin that enables you to get answers directly to your IDE!
    </description>
 
-   <feature url="features/so_helper_1.0.0.201510121808.jar" id="com.so.eclipse.helper" version="1.0.0.201510121808"/>
+   <feature url="features/so_helper_1.0.0.201510121808.jar" id="com.so.eclipse.helper" version="1.0.0.201510121808">
+     <category name="com.so.eclipse.helper"/>
+   </feature>
 
    <category-def name="com.so.eclipse.helper" label="SO Eclipse Helper">
       <description>
