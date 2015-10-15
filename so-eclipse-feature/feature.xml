@@ -2,7 +2,7 @@
 <feature
       id="com.so.eclipse.helper"
       label="SO Eclipse Helper"
-      version="1.0.0.qualifier"
+      version="1.0.0"
       provider-name="Maroun Maroun"
       plugin="com.so.eclipse.helper">
 
