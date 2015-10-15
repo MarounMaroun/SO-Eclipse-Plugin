@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: SOhelper
-Bundle-SymbolicName: com.sohelper;singleton:=true
+Bundle-SymbolicName: so-eclipse-plugin;singleton:=true
 Bundle-Version: 1.0.0.qualifier
 Bundle-Activator: com.sohelper.ui.Activator
 Require-Bundle: org.eclipse.ui,
