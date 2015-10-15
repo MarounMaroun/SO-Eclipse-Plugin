@@ -33,7 +33,7 @@ THE SOFTWARE.
    </license>
 
    <url>
-      <update label="SO Eclipse Helper Update Site" url="https://raw.githubusercontent.com/MarounMaroun/SO-Eclipse-Plugin/project_refactoring/so-eclipse-update-site/site.xml"/>
+      <update label="SO Eclipse Helper Update Site" url="https://raw.githubusercontent.com/MarounMaroun/SO-Eclipse-Plugin/master/so-eclipse-update-site/site.xml"/>
    </url>
 
    <plugin
