@@ -19,7 +19,7 @@ After clicking "OK" the answers dialog will open:
 ## Installation
 
 * Help > Install New Software... > Add
-* Insert "https://raw.githubusercontent.com/MarounMaroun/SO-Eclipse-Plugin/master/site.xml"
+* Insert "https://raw.githubusercontent.com/MarounMaroun/SO-Eclipse-Plugin/master/so-eclipse-update-site/site.xml"
 * Click OK and proceed with the installation process
 
 ## //TODO
