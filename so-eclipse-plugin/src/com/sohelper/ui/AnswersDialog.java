@@ -3,26 +3,25 @@ package com.sohelper.ui;
 
 import java.util.List;
 
-import org.eclipse.jface.dialogs.TitleAreaDialog;
 import org.eclipse.jface.dialogs.IDialogConstants;
-
+import org.eclipse.jface.dialogs.TitleAreaDialog;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.browser.Browser;
+import org.eclipse.swt.layout.GridData;
+import org.eclipse.swt.layout.GridLayout;
+import org.eclipse.swt.program.Program;
+import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Control;
+import org.eclipse.swt.widgets.Link;
 import org.eclipse.swt.widgets.Shell;
 
 import com.sohelper.answers.StackoverflowAnswer;
-
-import org.eclipse.swt.widgets.Label;
-import org.eclipse.swt.layout.GridData;
-import org.eclipse.swt.browser.Browser;
-import org.eclipse.swt.widgets.Control;
-import org.eclipse.swt.layout.GridLayout;
-import org.eclipse.swt.widgets.Composite;
 
 public class AnswersDialog extends TitleAreaDialog {
 
 	private Composite area;
 	private Browser browser;
-	private Label userLabel;
+	private Link linkToAnswer;
 	private int answerCount = 0;
 	private List<StackoverflowAnswer> answers;
 
@@ -67,7 +66,11 @@ public class AnswersDialog extends TitleAreaDialog {
 	}
 
 	private void createAnswerArea(Composite container) {
-		userLabel = new Label(area, SWT.NONE);
+		linkToAnswer = new Link(area, SWT.NONE);
+		
+		// Launches the operating system executable associated with the file or URL
+		linkToAnswer.addListener(SWT.Selection, event -> Program.launch(event.text));
+		
 		browser = new Browser(container, SWT.BORDER);
 		
 		GridData gridDataBrowser = new GridData();
@@ -79,14 +82,22 @@ public class AnswersDialog extends TitleAreaDialog {
 		gridDataUser.horizontalAlignment = SWT.FILL;
 		
 		browser.setLayoutData(gridDataBrowser);
-		userLabel.setLayoutData(gridDataUser);
+		linkToAnswer.setLayoutData(gridDataUser);
 		setAnswerContent();
 	}
 
 	private void setAnswerContent() {
 		browser.setText("<html>" + answers.get(answerCount).getBody() + "</html>");		
-		userLabel.setText("By: " + answers.get(answerCount).getUser() + " (" + answers.get(answerCount).getReputation().split("\\s+")[0] + ")");
-		userLabel.update();
+		linkToAnswer.setText(getLinkToAnswr(answers.get(answerCount)));
+		linkToAnswer.update();
+	}
+
+	private String getLinkToAnswr(StackoverflowAnswer stackoverflowAnswer) {
+		String linkToAnswer = answers.get(answerCount).getUrl();
+		String label = " (<a href=\"http://" + linkToAnswer + "\" style=\"text-decoration:none\">" + "go to answer" + "</a>)";
+		String userName = stackoverflowAnswer.getUser();
+				
+		return "By: " + userName + " - " + stackoverflowAnswer.getReputation() + label;
 	}
 
 	@Override

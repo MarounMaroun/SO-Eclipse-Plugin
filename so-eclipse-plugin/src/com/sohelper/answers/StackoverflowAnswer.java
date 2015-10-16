@@ -1,6 +1,7 @@
 package com.sohelper.answers;
 
 import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
 
 public class StackoverflowAnswer {
 
@@ -14,7 +15,14 @@ public class StackoverflowAnswer {
 		try {
 			this.element = element;
 			this.user = element.select("table.fw").select("div.user-info").last().select("a").text();
-			this.reputation = element.select("div.user-details").select("span.reputation-score").text();
+			
+			Elements reputationElement = element.select("div.user-details").select("span.reputation-score");
+			if (reputationElement.size() == 1) {
+				this.reputation = reputationElement.text();
+			} else {
+				this.reputation = reputationElement.text().split("\\s+")[1];
+			}
+			
 			this.url = "stackoverflow.com" + element.select("a.short-link").attr("href");
 		
 			this.body = element.select("div.post-text").html().replace("<code>", "<span style=\"background-color: #DCDCDC\"><code>");

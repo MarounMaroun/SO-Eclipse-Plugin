@@ -1,27 +1,27 @@
 package com.sohelper.handlers;
 
-import java.net.URL;
-import java.util.List;
-import java.io.Reader;
-import java.net.URLEncoder;
 import java.io.IOException;
+import java.net.URL;
 import java.util.ArrayList;
-import java.io.InputStreamReader;
+import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
+import org.eclipse.core.commands.AbstractHandler;
+import org.eclipse.core.commands.ExecutionEvent;
+import org.eclipse.core.commands.ExecutionException;
+import org.eclipse.jface.dialogs.InputDialog;
 import org.eclipse.jface.window.Window;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.handlers.HandlerUtil;
-import org.eclipse.jface.dialogs.InputDialog;
-import org.eclipse.core.commands.ExecutionEvent;
-import org.eclipse.core.commands.AbstractHandler;
-import org.eclipse.core.commands.ExecutionException;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
 
-import com.google.gson.Gson;
-
-import com.sohelper.ui.AnswersDialog;
 import com.sohelper.answers.StackoverflowAnswer;
 import com.sohelper.answers.StackoverflowPost;
-import com.sohelper.handlers.GoogleResult.Result;
+import com.sohelper.ui.AnswersDialog;
 
 
 /**
@@ -31,8 +31,7 @@ import com.sohelper.handlers.GoogleResult.Result;
  */
 public class SampleHandler extends AbstractHandler {
 	
-	private int startFrom = 0;
-	private final String SEARCH_SERVICE = "https://ajax.googleapis.com/ajax/services/search/web?v=1.0&start=";
+	private final String SEARCH_SERVICE = "https://www.google.com/search?as_q=";
 
 	/**
 	 * the command has been executed, so extract extract the needed information
@@ -70,31 +69,42 @@ public class SampleHandler extends AbstractHandler {
 		List<StackoverflowPost> stackoverflowPosts = new ArrayList<>();
 		
 		for (GoogleResult gr : googleResults) {
-			for (Result result : gr.getResponseData().getResults()) {
-				if (new URL(result.getUrl()).getHost().equals("stackoverflow.com")) {
-					stackoverflowPosts.add(new StackoverflowPost(result.getUrl()));
-				}
-			}
+				stackoverflowPosts.add(new StackoverflowPost(gr.getUrl().toString()));
 		}
 		return stackoverflowPosts;
 	}
 
 	private List<GoogleResult> getGoogleResults(String input) throws IOException {
 		ArrayList<GoogleResult> googleResults = new ArrayList<>();
-		URL url = null;
-		String query;
-		
-		while (startFrom < 12) {
-			query = SEARCH_SERVICE + String.valueOf(startFrom) + "&q=" + URLEncoder.encode(input, "UTF-8");
-			
-			url = new URL(query);
-			Reader reader = new InputStreamReader(url.openStream(), "UTF-8");
-			GoogleResult results = new Gson().fromJson(reader, GoogleResult.class);
-			
-			googleResults.add(results);
-			startFrom += 4;
-		}
-		startFrom = 0;
+
+		String query = SEARCH_SERVICE + input + ":stackoverflow.com";
+        Document doc = Jsoup.connect(query).userAgent("Mozilla").ignoreHttpErrors(true).timeout(0).get();
+        
+        Elements links = doc.select("li[class=g]");
+        
+        for (Element link : links) {
+        	GoogleResult gr = new GoogleResult();
+        	
+        	// get titles
+        	Elements titles = link.select("h3[class=r]");
+        	String title = titles.text();
+        	
+        	// extract link to the post in Stack Overflow
+            Pattern p = Pattern.compile("url\\?q=(.*?)&");
+            Matcher m = p.matcher(link.select("h3.r > a").attr("href"));
+            
+            String linkToPost = null;
+            
+            if (m.find()) {
+                linkToPost = m.group(1);
+            }
+            
+            gr.setTitle(title);
+            gr.setUrl(new URL(linkToPost));
+            
+            googleResults.add(gr);
+        	
+        }
 		
 		return googleResults;
 	}
