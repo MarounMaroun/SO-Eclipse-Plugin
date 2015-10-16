@@ -25,7 +25,6 @@ After clicking "OK" the answers dialog will open:
 ## //TODO
 
 * Improve UI
-* Link to the post that's being viewed
 * Include comments
 * Add "only accepted" and "top answers" filters
 * Any feature request is more than welcome
