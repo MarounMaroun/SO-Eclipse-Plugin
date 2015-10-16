@@ -1,42 +1,40 @@
 package com.sohelper.handlers;
 
-import java.util.List;
+import java.net.URL;
 
 /**
- * Represents a response from the google AJAX search service.
+ * Represents a response from Google search.
  */
 public class GoogleResult {
 
-    private ResponseData responseData;
+	private String title;
+    private URL url;
+    private String source;
     
-    public ResponseData getResponseData() {
-    	return responseData;
-    }
-    
-    public void setResponseData(ResponseData responseData) {
-    	this.responseData = responseData;
-    }
-    
-    public String toString() {
-    	return "ResponseData[" + responseData + "]";
-    }
 
-    static class ResponseData {
-        private List<Result> results;
-        
-        public List<Result> getResults() { return results; }
-        public void setResults(List<Result> results) { this.results = results; }
-        public String toString() { return "Results[" + results + "]"; }
-    }
+	public String getTitle() {
+		return title;
+	}
+    
+	public void setTitle(String title) {
+		this.title = title;
+	}
+	
+	public URL getUrl() {
+		return url;
+	}
+	
+	public void setUrl(URL url) {
+		this.url = url;
+	}
+	
+    public String getSource() {
+		return source;
+	}
 
-    static class Result {
-        private String url;
-        private String title;
-        
-        public String getUrl() { return url; }
-        public String getTitle() { return title; }
-        public void setUrl(String url) { this.url = url; }
-        public void setTitle(String title) { this.title = title; }
-        public String toString() { return "Result[url:" + url +",title:" + title + "]"; }
-    }
+	public void setSource(String source) {
+		this.source = source;
+	}
+	
+    
 }
