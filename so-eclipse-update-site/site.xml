@@ -1,15 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <site>
+
    <description name="SO Eclipse Helper Update Site">
       Eclipse plugin that enables you to get answers directly to your IDE!
    </description>
+   
    <feature url="features/com.so.eclipse.helper_1.0.0.jar" id="com.so.eclipse.helper" version="1.0.0">
       <category name="com.so.eclipse.helper"/>
    </feature>
-   <feature url="features/com.so.eclipse.helper_1.0.1.jar" id="com.so.eclipse.helper" version="1.0.1"/>
+   
+   <feature url="features/com.so.eclipse.helper_1.0.1.jar" id="com.so.eclipse.helper" version="1.0.1">
+      <category name="com.so.eclipse.helper"/>
+   </feature>
+   
    <category-def name="com.so.eclipse.helper" label="SO Eclipse Helper">
       <description>
          Eclipse plugin that enables you to get answers directly to your IDE!
       </description>
    </category-def>
+   
 </site>
