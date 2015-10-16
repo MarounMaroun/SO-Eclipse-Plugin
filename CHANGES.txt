@@ -1,0 +1,12 @@
+1.0.1
+-----
+
+- Replace Google AJAX API with simple Jsoup query due to service limitations
+- Add link to the answer being viewed
+- Bug fix: Wrong reputation when the answer was edited on Stack Overflow
+
+
+1.0.0
+-----
+
+Initial release.
