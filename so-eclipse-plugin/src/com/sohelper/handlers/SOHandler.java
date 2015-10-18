@@ -29,7 +29,7 @@ import com.sohelper.ui.AnswersDialog;
  * @see org.eclipse.core.commands.IHandler
  * @see org.eclipse.core.commands.AbstractHandler
  */
-public class SampleHandler extends AbstractHandler {
+public class SOHandler extends AbstractHandler {
 	
 	private final String SEARCH_SERVICE = "https://www.google.com/search?as_q=";
 
