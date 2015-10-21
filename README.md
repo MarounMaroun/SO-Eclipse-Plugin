@@ -4,15 +4,13 @@ Enables you to get answers from Stack Overflow directly to Eclipse!
 
 ## Features
 
-Right click on the editor, then select "Ask me":
-
-![Ask me](/images/ask_me.png)
+Right-click on the editor, then select "Ask me".
 
 The "SO ready to help" dialog should appear:
 
-![SO ready to help](/images/how_to.png)
+![SO ready to help](/images/question.png)
 
-After clicking "OK" the answers dialog will open:
+After clicking "Get answers!" the answers dialog will open:
 
 ![Answers dialog](/images/answers.png)
 
@@ -24,7 +22,6 @@ After clicking "OK" the answers dialog will open:
 
 ## //TODO
 
-* Improve UI
 * Include comments
 * Add "only accepted" and "top answers" filters
 * Any feature request is more than welcome
