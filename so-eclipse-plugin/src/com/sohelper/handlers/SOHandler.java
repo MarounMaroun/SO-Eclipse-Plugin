@@ -1,16 +1,13 @@
 package com.sohelper.handlers;
 
-import java.util.List;
-
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.handlers.HandlerUtil;
 
-import com.sohelper.answers.StackoverflowAnswer;
-import com.sohelper.ui.AnswersDialog;
-import com.sohelper.ui.SOHelperWizard;
+import com.sohelper.ui.MyWizardDialog;
+import com.sohelper.ui.StackoverflowWizard;
 
 
 /**
@@ -19,7 +16,6 @@ import com.sohelper.ui.SOHelperWizard;
  * @see org.eclipse.core.commands.AbstractHandler
  */
 public class SOHandler extends AbstractHandler {
-	
 
 	/**
 	 * the command has been executed, so extract extract the needed information
@@ -27,10 +23,7 @@ public class SOHandler extends AbstractHandler {
 	 */
 	public Object execute(ExecutionEvent event) throws ExecutionException {
 		IWorkbenchWindow window = HandlerUtil.getActiveWorkbenchWindowChecked(event);
-		SOHelperWizard q = new SOHelperWizard(window.getShell());
-		q.showWizard();
-		List<StackoverflowAnswer> stackoverflowAnswers = q.getAnswers();
-		AnswersDialog dialog = new AnswersDialog(window.getShell(), stackoverflowAnswers);
+		MyWizardDialog dialog = new MyWizardDialog(window.getShell(), new StackoverflowWizard());
 		dialog.open();
 		
 		return null;
