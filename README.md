@@ -22,7 +22,6 @@ After clicking "Get answers!" the answers dialog will open:
 
 ## //TODO
 
-* Improve UI
 * Include comments
 * Add "only accepted" and "top answers" filters
 * Any feature request is more than welcome
