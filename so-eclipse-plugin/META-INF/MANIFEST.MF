@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: SO Eclipse Helper
 Bundle-SymbolicName: com.so.eclipse.helper;singleton:=true
-Bundle-Version: 1.0.1
+Bundle-Version: 1.0.2
 Bundle-Activator: com.sohelper.ui.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime
@@ -10,9 +10,6 @@ Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Bundle-Vendor: Maroun Maroun
 Bundle-ClassPath: .,
- lib/gson-2.2.4-javadoc.jar,
- lib/gson-2.2.4-sources.jar,
- lib/gson-2.2.4.jar,
  lib/jsoup-1.8.3-javadoc.jar,
  lib/jsoup-1.8.3-sources.jar,
  lib/jsoup-1.8.3.jar

@@ -9,6 +9,9 @@ import org.jsoup.nodes.Element;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
 
+/**
+ * This class is used to construct a post from Stack Overflow.
+ */
 public class StackoverflowPost {
 	
 	private String url;
@@ -23,6 +26,10 @@ public class StackoverflowPost {
 		return this.url;
 	}
 	
+	/**
+	 * Returns the answers in this post.
+	 * @return A list containing <code>StackoverflowAnswer</code>s in this post.
+	 */
 	public List<StackoverflowAnswer> getAnswers() {
 		Elements stackoverflowAnswers = doc.select("#answers > div");
 		List<StackoverflowAnswer> soAnswers = new ArrayList<>();

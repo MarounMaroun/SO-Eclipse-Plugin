@@ -3,6 +3,9 @@ package com.sohelper.answers;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
+/**
+ * This class is used to construct a Stack Overflow answer.
+ */
 public class StackoverflowAnswer {
 
 	private Element element;
