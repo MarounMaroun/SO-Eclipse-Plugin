@@ -1,3 +1,10 @@
+1.0.2
+-----
+
+- Improve UI - All hapens in the same page!
+- Remove unsed JARs from the project
+
+
 1.0.1
 -----
 
