@@ -2,12 +2,16 @@
 <feature
       id="com.so.eclipse.helper"
       label="SO Eclipse Helper"
-      version="1.0.1"
+      version="1.0.2"
       provider-name="Maroun Maroun"
       plugin="com.so.eclipse.helper">
 
    <description url="https://github.com/MarounMaroun/SO-Eclipse-Plugin">
       Enables you to get answers from Stack Overflow directly to Eclipse!
+
+* Now it&apos;s done within the SAME window, no need to open the dialog again and again
+* A new progress bar is available
+* Link to the answer that&apos;s being viewed
    </description>
 
    <license url="https://opensource.org/licenses/MIT">
@@ -40,7 +44,7 @@ THE SOFTWARE.
          id="com.so.eclipse.helper"
          download-size="0"
          install-size="0"
-         version="1.0.1"
+         version="1.0.2"
          unpack="false"/>
 
 </feature>
