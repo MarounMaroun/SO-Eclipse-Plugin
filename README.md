@@ -2,8 +2,6 @@
 
 Enables you to get answers from Stack Overflow directly to Eclipse!
 
-Drag the following button to your running Eclipse workspace
-
 [![Eclipse install](https://marketplace.eclipse.org/sites/all/modules/custom/marketplace/images/installbutton.png)](http://marketplace.eclipse.org/marketplace-client-intro?mpc_install=2563246)
 
 
