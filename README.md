@@ -19,6 +19,12 @@ After clicking "Get answers!" the answers dialog will open:
 
 ## Installation
 
+The plugin is available on [Eclipse Marketplace](https://marketplace.eclipse.org/content/so-eclipse-plugin), you can install it by dragging the following button to your running workspace
+
+[![Eclipse install](https://marketplace.eclipse.org/sites/all/modules/custom/marketplace/images/installbutton.png)](http://marketplace.eclipse.org/marketplace-client-intro?mpc_install=2563246)
+
+You can also install it within Eclipse itself:
+
 * Help > Install New Software... > Add
 * Insert "https://raw.githubusercontent.com/MarounMaroun/SO-Eclipse-Plugin/master/so-eclipse-update-site/site.xml"
 * Click OK and proceed with the installation process
