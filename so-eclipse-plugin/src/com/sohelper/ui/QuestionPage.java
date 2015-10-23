@@ -30,26 +30,30 @@ class QuestionPage extends WizardPage {
 	
 	@Override
 	public void createControl(Composite parent) {
-		container = new Composite(parent, SWT.NONE);
 		GridLayout layout = new GridLayout();
-		container.setLayout(layout);
 		layout.numColumns = 2;
 		layout.verticalSpacing = 20;
-		Label label1 = new Label(container, SWT.NONE);
-		label1.setText("Question: ");
+		
+		container = new Composite(parent, SWT.NONE);
+		container.setLayout(layout);
+		
+		Label questionLbl = new Label(container, SWT.NONE);
+		questionLbl.setText("Question: ");
 
 		questionText = new Text(container, SWT.BORDER | SWT.SINGLE);
 		
 		GridData gd = new GridData(GridData.FILL_HORIZONTAL);
 		questionText.setLayoutData(gd);
 		
-		Composite optionsCont = new Composite(container, SWT.NONE);
 		GridLayout optionsLayout = new GridLayout();
 		optionsLayout.horizontalSpacing = 20;
 		optionsLayout.numColumns = 2;
+		
 		GridData optionsData = new GridData(GridData.VERTICAL_ALIGN_END);
 		optionsData.horizontalSpan = 2;
 		optionsData.horizontalAlignment = GridData.FILL;
+		Composite optionsCont = new Composite(container, SWT.NONE);
+		
 		optionsCont.setLayoutData(optionsData);
 		optionsCont.setLayout(optionsLayout);
 		
@@ -70,6 +74,10 @@ class QuestionPage extends WizardPage {
 		setPageComplete(true);
 	}
 
+	/**
+	 * Returns the content of the question that was inserted in the question page textbox.
+	 * @return The content of the question.
+	 */
 	public String getQuesiton() {
 		return questionText.getText();
 	}

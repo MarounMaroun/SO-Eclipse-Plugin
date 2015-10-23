@@ -1,4 +1,4 @@
-package com.sohelper.handlers;
+package com.sohelper.datatypes;
 
 import java.net.URL;
 
@@ -34,7 +34,5 @@ public class GoogleResult {
 
 	public void setSource(String source) {
 		this.source = source;
-	}
-	
-    
+	}   
 }

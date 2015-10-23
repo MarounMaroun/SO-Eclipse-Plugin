@@ -23,6 +23,7 @@ public class SOHandler extends AbstractHandler {
 	 */
 	public Object execute(ExecutionEvent event) throws ExecutionException {
 		IWorkbenchWindow window = HandlerUtil.getActiveWorkbenchWindowChecked(event);
+		
 		MyWizardDialog dialog = new MyWizardDialog(window.getShell(), new StackoverflowWizard());
 		dialog.open();
 		

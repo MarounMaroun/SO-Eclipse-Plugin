@@ -1,4 +1,4 @@
-package com.sohelper.answers;
+package com.sohelper.datatypes;
 
 import java.util.List;
 import java.io.IOException;
