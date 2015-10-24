@@ -1,4 +1,4 @@
-package com.sohelper.answers;
+package com.sohelper.datatypes;
 
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
