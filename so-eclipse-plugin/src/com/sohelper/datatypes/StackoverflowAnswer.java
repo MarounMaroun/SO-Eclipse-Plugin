@@ -13,12 +13,13 @@ public class StackoverflowAnswer {
 	private String reputation;
 	private String url;
 	private String body;
+	private String upVoteCount;
 	
 	public StackoverflowAnswer(Element element) {
 		try {
 			this.element = element;
 			this.user = element.select("table.fw").select("div.user-info").last().select("a").text();
-			
+						
 			Elements reputationElement = element.select("div.user-details").select("span.reputation-score");
 			if (reputationElement.size() == 1) {
 				this.reputation = reputationElement.text();
@@ -30,6 +31,8 @@ public class StackoverflowAnswer {
 		
 			this.body = element.select("div.post-text").html().replace("<code>", "<span style=\"background-color: #DCDCDC\"><code>");
 			this.body = this.body.replace("</code>", "</span></code>");
+			
+			this.upVoteCount = element.select("span.vote-count-post").text();
 		}
 		catch (Exception e) {
 			
@@ -55,5 +58,13 @@ public class StackoverflowAnswer {
 	
 	public String getBody() {
 		return this.body;
+	}
+
+	public String getUpVoteCount() {
+		return upVoteCount;
+	}
+
+	public void setUpVoteCount(String upVoteCount) {
+		this.upVoteCount = upVoteCount;
 	}
 }
