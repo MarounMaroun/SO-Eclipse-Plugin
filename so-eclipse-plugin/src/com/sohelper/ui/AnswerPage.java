@@ -138,10 +138,11 @@ public class AnswerPage extends WizardPage {
 	 */
 	private String getAnswerDetails(StackoverflowAnswer stackoverflowAnswer) {
 		String linkToAnswer = answers.get(answerCount).getUrl();
-		String linkLbl = " (<a href=\"http://" + linkToAnswer + "\" style=\"text-decoration:none\">" + "go to answer" + "</a>)";
+		String linkLbl = "<a href=\"http://" + linkToAnswer + "\" style=\"text-decoration:none\">" + "go to answer" + "</a>";
 		String userName = stackoverflowAnswer.getUser();
+		String voteCount = stackoverflowAnswer.getVoteCount();
 
-		return "By: " + userName + " - " + stackoverflowAnswer.getReputation() + linkLbl;
+		return "By: " + userName + " - " + stackoverflowAnswer.getReputation() + " (" + linkLbl + " : " + voteCount + " Votes)";
 	}
 
 	/**

@@ -13,7 +13,7 @@ public class StackoverflowAnswer {
 	private String reputation;
 	private String url;
 	private String body;
-	private String upVoteCount;
+	private String voteCount;
 	
 	public StackoverflowAnswer(Element element) {
 		try {
@@ -32,7 +32,7 @@ public class StackoverflowAnswer {
 			this.body = element.select("div.post-text").html().replace("<code>", "<span style=\"background-color: #DCDCDC\"><code>");
 			this.body = this.body.replace("</code>", "</span></code>");
 			
-			this.upVoteCount = element.select("span.vote-count-post").text();
+			this.voteCount = element.select("span.vote-count-post").text();
 		}
 		catch (Exception e) {
 			
@@ -60,11 +60,11 @@ public class StackoverflowAnswer {
 		return this.body;
 	}
 
-	public String getUpVoteCount() {
-		return upVoteCount;
+	public String getVoteCount() {
+		return voteCount;
 	}
 
-	public void setUpVoteCount(String upVoteCount) {
-		this.upVoteCount = upVoteCount;
+	public void setVoteCount(String voteCount) {
+		this.voteCount = voteCount;
 	}
 }
