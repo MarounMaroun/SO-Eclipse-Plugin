@@ -132,16 +132,18 @@ public class AnswerPage extends WizardPage {
 	}
 
 	/**
-	 * Returns the link to the answer and the user's reputation.
+	 * Returns the link to the answer and to the user page along with his reputation and the count vote for the answer.
 	 * @param stackoverflowAnswer the answer that's being viewed.
-	 * @return The username, their reputation and link to the answer.
+	 * @return The answer vote count as a link to the answer and the username with his reputation as a link to the user page.
 	 */
 	private String getAnswerDetails(StackoverflowAnswer stackoverflowAnswer) {
 		String linkToAnswer = answers.get(answerCount).getUrl();
-		String linkLbl = " (<a href=\"http://" + linkToAnswer + "\" style=\"text-decoration:none\">" + "go to answer" + "</a>)";
-		String userName = stackoverflowAnswer.getUser();
+		String voteCount = stackoverflowAnswer.getVoteCount();
+		String answarLinkLbl = "<a href=\"http://" + linkToAnswer + "\" style=\"text-decoration:none\">" + voteCount + " votes</a>";
+		String userLinkLbl = "<a href=\"http://" + stackoverflowAnswer.getUserUrl() + "\" style=\"text-decoration:none\">" 
+																						+ stackoverflowAnswer.getUser() + "</a>";
 
-		return "By: " + userName + " - " + stackoverflowAnswer.getReputation() + linkLbl;
+		return answarLinkLbl + ", by " + userLinkLbl + " - " + stackoverflowAnswer.getReputation();
 	}
 
 	/**
