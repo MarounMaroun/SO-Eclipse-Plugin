@@ -143,7 +143,7 @@ public class AnswerPage extends WizardPage {
 		String userLinkLbl = "<a href=\"http://" + stackoverflowAnswer.getUserUrl() + "\" style=\"text-decoration:none\">" 
 																						+ stackoverflowAnswer.getUser() + "</a>";
 
-		return answarLinkLbl + ", by: " + userLinkLbl + " - " + stackoverflowAnswer.getReputation();
+		return answarLinkLbl + ", by " + userLinkLbl + " - " + stackoverflowAnswer.getReputation();
 	}
 
 	/**
