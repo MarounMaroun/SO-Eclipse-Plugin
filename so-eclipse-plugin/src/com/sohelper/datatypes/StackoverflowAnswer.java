@@ -15,8 +15,7 @@ public class StackoverflowAnswer {
 	private String body;
 	private String voteCount;
 	private String userUrl;
-	
-	private Boolean isAcceptedAnswer;
+	private boolean isAcceptedAnswer;
 	
 	// String Constants
 	private final String ACCEPTED_ANSWER = "acceptedAnswer";
@@ -91,11 +90,12 @@ public class StackoverflowAnswer {
 		this.userUrl = userUrl;
 	}
 	
-	public Boolean getIsAcceptedAnswer() {
+	public boolean isAcceptedAnswer() {
 		return isAcceptedAnswer;
 	}
 
-	public void setIsAcceptedAnswer(Boolean isAcceptedAnswer) {
+	public void setAcceptedAnswer(boolean isAcceptedAnswer) {
 		this.isAcceptedAnswer = isAcceptedAnswer;
 	}
+	
 }
