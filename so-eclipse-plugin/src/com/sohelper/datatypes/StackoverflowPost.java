@@ -19,7 +19,7 @@ public class StackoverflowPost {
 
 	public StackoverflowPost(String url) throws IOException {
 		this.url = url;
-		this.doc = Jsoup.connect(url).get();
+		this.doc = Jsoup.connect(url).userAgent("Mozilla").ignoreHttpErrors(true).timeout(0).get();
 	}
 	
 	public String getUrl() {

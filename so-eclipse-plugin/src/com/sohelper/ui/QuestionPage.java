@@ -3,6 +3,8 @@ package com.sohelper.ui;
 import org.eclipse.jface.wizard.IWizardContainer;
 import org.eclipse.jface.wizard.WizardPage;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.events.SelectionAdapter;
+import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
@@ -17,9 +19,10 @@ import org.eclipse.swt.widgets.Text;
  * @author Maroun Maroun
  *
  */
-class QuestionPage extends WizardPage {
+public class QuestionPage extends WizardPage {
 	private Text questionText;
 	private Composite container;
+	private boolean isAcceptedOnly = false;
 
 	public QuestionPage() {
 		super("Question Page");
@@ -57,11 +60,20 @@ class QuestionPage extends WizardPage {
 		optionsCont.setLayoutData(optionsData);
 		optionsCont.setLayout(optionsLayout);
 		
-		Button check = new Button(optionsCont, SWT.CHECK);
+		Button onlyAcceptedCheckbox = new Button(optionsCont, SWT.CHECK);
 		Label onlyAcceptedLbl = new Label(optionsCont, SWT.NONE);
-		onlyAcceptedLbl.setText("Accepted only (soon)");
-		check.setSelection(false); 
-		check.setEnabled(false);
+		onlyAcceptedLbl.setText("Accepted only");
+		
+		onlyAcceptedCheckbox.addSelectionListener(new SelectionAdapter() {
+
+	        @Override
+	        public void widgetSelected(SelectionEvent event) {
+	            Button btn = (Button) event.getSource();
+	            isAcceptedOnly = btn.getSelection();
+	        }
+	    });
+		
+		onlyAcceptedCheckbox.setSelection(false); 
 				
 		Button votedUpCheckbox = new Button(optionsCont, SWT.CHECK);
 		Label onlyVotedUpLbl = new Label(optionsCont, SWT.NONE);
@@ -91,5 +103,9 @@ class QuestionPage extends WizardPage {
 	public IWizardContainer getContainer()
 	{
 		return super.getContainer();
+	}
+	
+	public boolean isAcceptedOnly() {
+		return isAcceptedOnly;
 	}
 }

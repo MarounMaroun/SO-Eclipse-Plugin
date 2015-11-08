@@ -9,6 +9,7 @@ import org.eclipse.core.runtime.IProgressMonitor;
 import com.sohelper.datatypes.GoogleResult;
 import com.sohelper.datatypes.StackoverflowAnswer;
 import com.sohelper.datatypes.StackoverflowPost;
+import com.sohelper.ui.QuestionPage;
 
 /**
  * Fetches Stack Overflow posts from <code>GoogleResult</code>. 
@@ -43,7 +44,7 @@ public class StackoverflowFetcher {
 	 * @param stackoverflowPosts List of Stack Overflow posts.
 	 * @return List of Stack Overflow answers.
 	 */
-	public static List<StackoverflowAnswer> getStackoverflowAnswers(List<StackoverflowPost> stackoverflowPosts, IProgressMonitor monitor) {
+	public static List<StackoverflowAnswer> getStackoverflowAnswers(List<StackoverflowPost> stackoverflowPosts, IProgressMonitor monitor, QuestionPage qp) {
 		List<StackoverflowAnswer> stackoverflowAnswers = new ArrayList<>();
 		
 		int size = stackoverflowPosts.size();
@@ -53,7 +54,9 @@ public class StackoverflowFetcher {
 			for (StackoverflowAnswer answer : stackoverflowPosts.get(i).getAnswers()) {
 				if (answer.getUrl() == null)
 					continue;
-				if(answer.isAcceptedAnswer()){
+				if (qp.isAcceptedOnly() && answer.isAccepted()) {
+					stackoverflowAnswers.add(answer);
+				} else if (!qp.isAcceptedOnly()){
 					stackoverflowAnswers.add(answer);
 				}
 			}

@@ -2,7 +2,7 @@
 <feature
       id="com.so.eclipse.helper"
       label="SO Eclipse Helper"
-      version="1.0.2"
+      version="1.0.3"
       provider-name="Maroun Maroun"
       plugin="com.so.eclipse.helper">
 
@@ -44,7 +44,7 @@ THE SOFTWARE.
          id="com.so.eclipse.helper"
          download-size="0"
          install-size="0"
-         version="1.0.2"
+         version="1.0.3"
          unpack="false"/>
 
 </feature>
