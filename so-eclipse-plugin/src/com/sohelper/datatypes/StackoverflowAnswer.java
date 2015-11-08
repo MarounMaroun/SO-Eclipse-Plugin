@@ -15,21 +15,19 @@ public class StackoverflowAnswer {
 	private String body;
 	private String voteCount;
 	private String userUrl;
-	private boolean isAcceptedAnswer;
-	
-	// String Constants
-	private final String ACCEPTED_ANSWER = "acceptedAnswer";
-	private final String ITEM_PROP = "itemprop";
+	private boolean isAccepted;
 	
 	public StackoverflowAnswer(Element element) {
 		try {
 			this.element = element;
-			String acceptedAnswerText = element.getElementsByAttributeValue(ITEM_PROP, ACCEPTED_ANSWER).attr(ITEM_PROP).toString();
-			if(acceptedAnswerText != null && !acceptedAnswerText.isEmpty() && ACCEPTED_ANSWER.equals(acceptedAnswerText)){
-				this.isAcceptedAnswer = true;
-			}else{
-				this.isAcceptedAnswer = false;
+			
+			String acceptedAnswerText = element.getElementsByAttributeValue("itemprop", "acceptedAnswer").attr("itemprop").toString();
+			if("acceptedAnswer".equals(acceptedAnswerText)) {
+				this.isAccepted = true;
+			} else {
+				this.isAccepted = false;
 			}
+			
 			Element userElement = element.select("table.fw").select("div.user-info").last().select("a").last();
 			this.user = userElement.text();
 			this.userUrl = "stackoverflow.com" + userElement.attr("href");
@@ -37,8 +35,10 @@ public class StackoverflowAnswer {
 			Elements reputationElement = element.select("div.user-details").select("span.reputation-score");
 			if (reputationElement.size() == 1) {
 				this.reputation = reputationElement.text();
-			} else {
+			} else if (reputationElement.size() > 1) {
 				this.reputation = reputationElement.text().split("\\s+")[1];
+			} else {
+				this.reputation = "community wiki";
 			}
 			
 			this.url = "stackoverflow.com" + element.select("a.short-link").attr("href");
@@ -90,12 +90,12 @@ public class StackoverflowAnswer {
 		this.userUrl = userUrl;
 	}
 	
-	public boolean isAcceptedAnswer() {
-		return isAcceptedAnswer;
+	public boolean isAccepted() {
+		return isAccepted;
 	}
 
-	public void setAcceptedAnswer(boolean isAcceptedAnswer) {
-		this.isAcceptedAnswer = isAcceptedAnswer;
+	public void setAccepted(boolean isAccepted) {
+		this.isAccepted = isAccepted;
 	}
 	
 }

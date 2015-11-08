@@ -57,7 +57,7 @@ public class MyWizardDialog extends WizardDialog {
 					try {
 						List<GoogleResult> googleResults = GoogleFetcher.getGoogleResults(question, monitor);
 						List<StackoverflowPost> stackoverflowPosts = StackoverflowFetcher.getStackoverflowPosts(googleResults, monitor);
-						List<StackoverflowAnswer> stackoverflowAnswers = StackoverflowFetcher.getStackoverflowAnswers(stackoverflowPosts, monitor);
+						List<StackoverflowAnswer> stackoverflowAnswers = StackoverflowFetcher.getStackoverflowAnswers(stackoverflowPosts, monitor, questionPage);
 
 						answerPage.setAnswer(stackoverflowAnswers);
 
