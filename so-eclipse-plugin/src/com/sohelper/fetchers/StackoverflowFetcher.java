@@ -53,7 +53,9 @@ public class StackoverflowFetcher {
 			for (StackoverflowAnswer answer : stackoverflowPosts.get(i).getAnswers()) {
 				if (answer.getUrl() == null)
 					continue;
-				stackoverflowAnswers.add(answer);
+				if(answer.isAcceptedAnswer()){
+					stackoverflowAnswers.add(answer);
+				}
 			}
 		}
 		
