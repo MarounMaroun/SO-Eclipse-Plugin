@@ -32,13 +32,12 @@ You can also install it within Eclipse itself:
 ## //TODO
 
 * Include comments
-* Add "only accepted" and "top answers" filters
+* Add "top answers" filters
 * Any feature request is more than welcome
 
 ## Running Locally
 
 * Download [Eclipse Plug-in Development Environment (PDE)](http://www.eclipse.org/pde/)
-* File > Import...
-* General > Existing Projects into Workspace
-* Select root directory > Browse...
-* Choose the project's root
+* "File" > "Import..."
+* "General" > "Existing Projects into Workspace"
+* "Browse..." and choose the project's root
