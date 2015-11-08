@@ -1,3 +1,3 @@
-Sebastian Raubach
-Roy Klinger
-Hiren Savalia
+* Sebastian Raubach
+* Roy Klinger
+* Hiren Savalia
