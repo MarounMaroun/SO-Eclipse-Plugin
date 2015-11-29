@@ -7,7 +7,7 @@ Enables you to get answers from Stack Overflow directly to Eclipse!
 
 ## Features
 
-Right-click on the editor, then select "Ask me".
+Right-click on the editor, then select "Ask me" or press ALT + Q (default key-binding)
 
 The "SO ready to help" dialog should appear:
 

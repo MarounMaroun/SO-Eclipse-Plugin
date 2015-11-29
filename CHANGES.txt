@@ -1,3 +1,8 @@
+1.0.4
+-----
+
+- Added default key binding to SO search
+
 1.0.3
 -----
 
@@ -8,8 +13,8 @@
 1.0.2
 -----
 
-- Improve UI - All hapens in the same page!
-- Remove unsed JARs from the project
+- Improve UI - All happens in the same page!
+- Remove unused JARs from the project
 
 
 1.0.1
