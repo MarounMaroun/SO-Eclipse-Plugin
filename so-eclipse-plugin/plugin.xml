@@ -29,5 +29,12 @@
          commandId="com.sohelper.getanswer">
       </handler>
    </extension>
-
+<extension
+         point="org.eclipse.ui.bindings">
+   <key
+         commandId="com.sohelper.getanswer"
+         schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+         sequence="ALT+Q">
+   </key>
+   </extension>
 </plugin>
