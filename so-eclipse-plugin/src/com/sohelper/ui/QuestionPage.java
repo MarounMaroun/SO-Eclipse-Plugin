@@ -23,6 +23,7 @@ public class QuestionPage extends WizardPage {
 	private Text questionText;
 	private Composite container;
 	private boolean isAcceptedOnly = false;
+	private boolean isUpVotedOnly = false;
 
 	public QuestionPage() {
 		super("Question Page");
@@ -77,9 +78,15 @@ public class QuestionPage extends WizardPage {
 				
 		Button votedUpCheckbox = new Button(optionsCont, SWT.CHECK);
 		Label onlyVotedUpLbl = new Label(optionsCont, SWT.NONE);
-		onlyVotedUpLbl.setText("Voted only (soon)");
-		votedUpCheckbox.setSelection(false); 
-		votedUpCheckbox.setEnabled(false);
+		onlyVotedUpLbl.setText("Voted only");
+		
+		votedUpCheckbox.addSelectionListener(new SelectionAdapter() {
+			@Override
+	        public void widgetSelected(SelectionEvent event) {
+	            Button btn = (Button) event.getSource();
+	            isUpVotedOnly = btn.getSelection();
+	        }
+		});
 		
 		// required to avoid an error in the system
 		setControl(container);
@@ -107,5 +114,9 @@ public class QuestionPage extends WizardPage {
 	
 	public boolean isAcceptedOnly() {
 		return isAcceptedOnly;
+	}
+	
+	public boolean isUpVotedOnly() {
+		return isUpVotedOnly;
 	}
 }

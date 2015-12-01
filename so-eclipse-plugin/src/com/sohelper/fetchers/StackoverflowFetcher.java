@@ -46,22 +46,47 @@ public class StackoverflowFetcher {
 	 */
 	public static List<StackoverflowAnswer> getStackoverflowAnswers(List<StackoverflowPost> stackoverflowPosts, IProgressMonitor monitor, QuestionPage qp) {
 		List<StackoverflowAnswer> stackoverflowAnswers = new ArrayList<>();
+		List<StackoverflowAnswer> finalAnswerList = new ArrayList<>();
 		
 		int size = stackoverflowPosts.size();
 		
 		for (int i=0; i < stackoverflowPosts.size(); i++) {
 			monitor.worked(10 / size);
 			for (StackoverflowAnswer answer : stackoverflowPosts.get(i).getAnswers()) {
-				if (answer.getUrl() == null)
+				if (answer.getUrl() == null){
 					continue;
-				if (qp.isAcceptedOnly() && answer.isAccepted()) {
-					stackoverflowAnswers.add(answer);
-				} else if (!qp.isAcceptedOnly()){
-					stackoverflowAnswers.add(answer);
 				}
+				stackoverflowAnswers.add(answer);
 			}
 		}
-		
-		return stackoverflowAnswers;
+		/**
+		 * 1. First get all answers. 
+		 * 2. Get user's preference from UI.
+		 * 3. Filter answers accordingly.
+		 */
+		if(qp.isAcceptedOnly() && qp.isUpVotedOnly()){
+			for (StackoverflowAnswer stackoverflowAnswer : stackoverflowAnswers) {
+					if(stackoverflowAnswer.isAccepted() && stackoverflowAnswer.isUpVoted()){
+						finalAnswerList.add(stackoverflowAnswer);
+					}
+			}
+			return finalAnswerList;
+		}else if(qp.isAcceptedOnly()){
+			for (StackoverflowAnswer stackoverflowAnswer : stackoverflowAnswers) {
+				if(stackoverflowAnswer.isAccepted()){
+					finalAnswerList.add(stackoverflowAnswer);
+				}
+			}
+			return finalAnswerList;
+		}else if(qp.isUpVotedOnly()){
+			for (StackoverflowAnswer stackoverflowAnswer : stackoverflowAnswers) {
+				if(stackoverflowAnswer.isUpVoted()){
+					finalAnswerList.add(stackoverflowAnswer);
+				}
+			}
+			return finalAnswerList;
+		}else{
+			return stackoverflowAnswers;
+		}
 	}
 }
