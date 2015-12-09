@@ -16,6 +16,7 @@ public class StackoverflowAnswer {
 	private String voteCount;
 	private String userUrl;
 	private boolean isAccepted;
+	private boolean isUpVoted;
 	
 	public StackoverflowAnswer(Element element) {
 		try {
@@ -26,6 +27,18 @@ public class StackoverflowAnswer {
 				this.isAccepted = true;
 			} else {
 				this.isAccepted = false;
+			}
+			
+			String votedUp = element.select("span[class=vote-count-post]").text();
+			if(votedUp != null && !votedUp.isEmpty()){
+				int votedUpCount = Integer.parseInt(votedUp);
+				if(votedUpCount != 0 && votedUpCount >0){
+					this.isUpVoted = true;
+				}else{
+					this.isUpVoted = false;
+				}
+			}else{
+				this.isUpVoted = false;
 			}
 			
 			Element userElement = element.select("table.fw").select("div.user-info").last().select("a").last();
@@ -96,6 +109,14 @@ public class StackoverflowAnswer {
 
 	public void setAccepted(boolean isAccepted) {
 		this.isAccepted = isAccepted;
+	}
+	
+	public boolean isUpVoted() {
+		return isUpVoted;
+	}
+
+	public void setUpVoted(boolean isUpVoted) {
+		this.isUpVoted = isUpVoted;
 	}
 	
 }
