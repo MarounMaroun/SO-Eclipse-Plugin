@@ -8,8 +8,10 @@ import java.util.List;
 import org.eclipse.jface.dialogs.IDialogConstants;
 import org.eclipse.jface.wizard.IWizard;
 import org.eclipse.jface.wizard.WizardDialog;
+import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.MessageBox;
 import org.eclipse.swt.widgets.Shell;
 
 import com.sohelper.datatypes.GoogleResult;
@@ -49,7 +51,14 @@ public class MyWizardDialog extends WizardDialog {
 
 			try {
 				final String question = questionPage.getQuesiton();
-
+				// if User has not given any input question then do not process and show error dialog box
+				if(question == null || question.trim().isEmpty()) {
+					MessageBox questionErrorBox = new MessageBox(new Shell(), SWT.OK | SWT.ICON_ERROR);
+					questionErrorBox.setMessage("Please enter your question.");
+					questionErrorBox.setText("Error");
+					questionErrorBox.open();
+					return;
+				}
 				questionPage.getContainer().run(false, true, (monitor) ->
 				{					
 					monitor.beginTask("Getting answers from Stack Overflow...", 100);
