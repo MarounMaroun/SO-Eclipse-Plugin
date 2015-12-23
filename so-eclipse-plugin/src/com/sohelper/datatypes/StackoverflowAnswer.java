@@ -30,10 +30,10 @@ public class StackoverflowAnswer {
 			}
 			
 			String votedUp = element.select("span[class=vote-count-post]").text();
-			if(votedUp != null && !votedUp.isEmpty()){
+			if (votedUp != null && !votedUp.isEmpty()) {
 				int votedUpCount = Integer.parseInt(votedUp);
 				this.isUpVoted = (votedUpCount != 0 && votedUpCount > 0);
-			}else{
+			} else {
 				this.isUpVoted = false;
 			}
 			

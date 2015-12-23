@@ -52,7 +52,7 @@ public class MyWizardDialog extends WizardDialog {
 			try {
 				final String question = questionPage.getQuesiton();
 				// if User has not given any input question then do not process and show error dialog box
-				if(question == null || question.trim().isEmpty()) {
+				if (question == null || question.trim().isEmpty()) {
 					MessageBox questionErrorBox = new MessageBox(new Shell(), SWT.OK | SWT.ICON_ERROR);
 					questionErrorBox.setMessage("Please enter your question.");
 					questionErrorBox.setText("Error");
