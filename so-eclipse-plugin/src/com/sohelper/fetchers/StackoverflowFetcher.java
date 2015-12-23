@@ -57,11 +57,11 @@ public class StackoverflowFetcher {
 				}
 				if (qp.isAcceptedOnly() && qp.isUpVotedOnly() && answer.isAccepted() && answer.isUpVoted()) {
 					stackoverflowAnswers.add(answer);
-				}else if (qp.isAcceptedOnly() && answer.isAccepted() && !qp.isUpVotedOnly()) {
+				} else if (qp.isAcceptedOnly() && answer.isAccepted() && !qp.isUpVotedOnly()) {
 					stackoverflowAnswers.add(answer);
-				}else if (qp.isUpVotedOnly() && answer.isUpVoted() && !qp.isAcceptedOnly()) {
+				} else if (qp.isUpVotedOnly() && answer.isUpVoted() && !qp.isAcceptedOnly()) {
 					stackoverflowAnswers.add(answer);
-				}else if (!qp.isAcceptedOnly() && !qp.isUpVotedOnly()) {
+				} else if (!qp.isAcceptedOnly() && !qp.isUpVotedOnly()) {
 					stackoverflowAnswers.add(answer);
 				}
 			}
