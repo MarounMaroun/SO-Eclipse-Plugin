@@ -52,11 +52,16 @@ public class StackoverflowFetcher {
 		for (int i=0; i < stackoverflowPosts.size(); i++) {
 			monitor.worked(10 / size);
 			for (StackoverflowAnswer answer : stackoverflowPosts.get(i).getAnswers()) {
-				if (answer.getUrl() == null)
+				if (answer.getUrl() == null) {
 					continue;
-				if (qp.isAcceptedOnly() && answer.isAccepted()) {
+				}
+				if (qp.isAcceptedOnly() && qp.isUpVotedOnly() && answer.isAccepted() && answer.isUpVoted()) {
 					stackoverflowAnswers.add(answer);
-				} else if (!qp.isAcceptedOnly()){
+				} else if (qp.isAcceptedOnly() && answer.isAccepted() && !qp.isUpVotedOnly()) {
+					stackoverflowAnswers.add(answer);
+				} else if (qp.isUpVotedOnly() && answer.isUpVoted() && !qp.isAcceptedOnly()) {
+					stackoverflowAnswers.add(answer);
+				} else if (!qp.isAcceptedOnly() && !qp.isUpVotedOnly()) {
 					stackoverflowAnswers.add(answer);
 				}
 			}
