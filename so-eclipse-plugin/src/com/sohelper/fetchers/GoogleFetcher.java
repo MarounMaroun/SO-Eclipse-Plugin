@@ -20,7 +20,6 @@ public class GoogleFetcher {
 	private final static String SEARCH_SERVICE = "https://www.google.com/search?as_q=";
 	private final static String DOMAIN = ":stackoverflow.com";
 
-
 	/**
 	 * Searches in Google for a query and returns a list containing <code>GoogleResult</code> objects.
 	 * 
@@ -39,22 +38,18 @@ public class GoogleFetcher {
 		Elements links = doc.select("div.g");
 		
 		int size = links.size();
-
-		for (int i=0; i < size; i++) {
+		for (int i = 0; i < size; i++) {
 			monitor.worked(20 / size);
 			
 			GoogleResult gr = new GoogleResult();
-
 			// get title
 			Elements titles = links.get(i).select("h3[class=r]");
 			String title = titles.text();
-
 			// extract link to the post in Stack Overflow
 			Pattern p = Pattern.compile("url\\?q=(.*?)&");
 			Matcher m = p.matcher(links.get(i).select("h3.r > a").attr("href"));
 
 			String linkToPost = "";
-
 			if (m.find()) {
 				linkToPost = m.group(1);
 			}
@@ -64,7 +59,6 @@ public class GoogleFetcher {
 
 			googleResults.add(gr);
 		}
-
 		return googleResults;
 	}
 	

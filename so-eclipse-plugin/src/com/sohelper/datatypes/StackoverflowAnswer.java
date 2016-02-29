@@ -23,16 +23,12 @@ public class StackoverflowAnswer {
 			this.element = element;
 			
 			String acceptedAnswerText = element.getElementsByAttributeValue("itemprop", "acceptedAnswer").attr("itemprop").toString();
-			if("acceptedAnswer".equals(acceptedAnswerText)) {
-				this.isAccepted = true;
-			} else {
-				this.isAccepted = false;
-			}
+			this.isAccepted = "acceptedAnswer".equals(acceptedAnswerText);
 			
 			String votedUp = element.select("span[class=vote-count-post]").text();
 			if (votedUp != null && !votedUp.isEmpty()) {
 				int votedUpCount = Integer.parseInt(votedUp);
-				this.isUpVoted = (votedUpCount != 0 && votedUpCount > 0);
+				this.isUpVoted = votedUpCount != 0 && votedUpCount > 0;
 			} else {
 				this.isUpVoted = false;
 			}
@@ -58,7 +54,7 @@ public class StackoverflowAnswer {
 			this.voteCount = element.select("span.vote-count-post").text();
 		}
 		catch (Exception e) {
-			
+			//TODO handle silent exception!
 		}
 	}
 
