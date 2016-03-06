@@ -23,7 +23,7 @@ public class StackoverflowAnswer {
 			this.element = element;
 			
 			String acceptedAnswerText = element.getElementsByAttributeValue("itemprop", "acceptedAnswer").attr("itemprop").toString();
-			this.isAccepted = "acceptedAnswer".equals(acceptedAnswerText)
+			this.isAccepted = "acceptedAnswer".equals(acceptedAnswerText);
 			
 			String votedUp = element.select("span[class=vote-count-post]").text();
 			if (votedUp != null && !votedUp.isEmpty()) {
