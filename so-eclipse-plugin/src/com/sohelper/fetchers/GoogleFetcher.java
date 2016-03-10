@@ -35,7 +35,7 @@ public class GoogleFetcher {
 		monitor.worked(10);
 		
 		Document doc = Jsoup.connect(query).userAgent("Mozilla").ignoreHttpErrors(true).timeout(0).get();
-		Elements links = doc.select("li[class=g]");
+		Elements links = doc.select("div.g");
 		
 		int size = links.size();
 		for (int i = 0; i < size; i++) {
