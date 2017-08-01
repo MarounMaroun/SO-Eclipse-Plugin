@@ -11,11 +11,7 @@ Right-click on the editor, then select "Ask me" or press ALT + Q (default key-bi
 
 The "SO ready to help" dialog should appear:
 
-![SO ready to help](/images/question.png)
-
-After clicking "Get answers!" the answers dialog will open:
-
-![Answers dialog](/images/answers.png)
+![SO ready to help](/images/example.gif)
 
 ## Installation
 
