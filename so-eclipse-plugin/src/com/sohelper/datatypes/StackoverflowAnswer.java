@@ -3,6 +3,8 @@ package com.sohelper.datatypes;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
+import com.sohelper.exceptions.StackoverflowParserException;
+
 /**
  * This class is used to construct a Stack Overflow answer.
  */
@@ -18,7 +20,7 @@ public class StackoverflowAnswer {
 	private boolean isAccepted;
 	private boolean isUpVoted;
 	
-	public StackoverflowAnswer(Element element) {
+	public StackoverflowAnswer(Element element) throws StackoverflowParserException {
 		try {
 			this.element = element;
 			
@@ -54,7 +56,7 @@ public class StackoverflowAnswer {
 			this.voteCount = element.select("span.vote-count-post").text();
 		}
 		catch (Exception e) {
-			//TODO handle silent exception!
+			throw new StackoverflowParserException("Couldn't parse Stack Overflow post with element: " + element.toString());
 		}
 	}
 

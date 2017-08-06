@@ -9,6 +9,8 @@ import org.jsoup.nodes.Element;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
 
+import com.sohelper.exceptions.StackoverflowParserException;
+
 /**
  * This class is used to construct a post from Stack Overflow.
  */
@@ -35,8 +37,14 @@ public class StackoverflowPost {
 		List<StackoverflowAnswer> soAnswers = new ArrayList<>();
 		
 		for (Element element : stackoverflowAnswers) {
-			soAnswers.add(new StackoverflowAnswer(element));
+			try {
+				StackoverflowAnswer answer = new StackoverflowAnswer(element);
+				soAnswers.add(answer);
+			} catch (StackoverflowParserException e) {
+				// do not add unparsed answers
+			}
 		}
+
 		return soAnswers;
 	}
 }
