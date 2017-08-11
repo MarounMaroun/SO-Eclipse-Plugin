@@ -5,20 +5,23 @@ import org.jsoup.select.Elements;
 
 import com.sohelper.exceptions.StackoverflowParserException;
 
+import lombok.Getter;
+import lombok.Setter;
+
 /**
  * This class is used to construct a Stack Overflow answer.
  */
 public class StackoverflowAnswer {
 
-	private Element element;
-	private String user;
-	private String reputation;
-	private String url;
-	private String body;
-	private String voteCount;
-	private String userUrl;
-	private boolean isAccepted;
-	private boolean isUpVoted;
+	@Getter private Element element;
+	@Getter private String user;
+	@Getter private String reputation;
+	@Getter private String url;
+	@Getter private String body;
+	@Getter @Setter private String voteCount;
+	@Getter @Setter private String userUrl;
+	@Getter @Setter private boolean isAccepted;
+	@Getter @Setter private boolean isUpVoted;
 	
 	public StackoverflowAnswer(Element element) throws StackoverflowParserException {
 		try {
@@ -59,58 +62,4 @@ public class StackoverflowAnswer {
 			throw new StackoverflowParserException("Couldn't parse Stack Overflow post with element: " + element.toString());
 		}
 	}
-
-	public Element getElement() {
-		return this.element;
-	}
-	
-	public String getUser() {
-		return this.user;
-	}
-	
-	// String because of Jon Skeet
-	public String getReputation() {
-		return this.reputation;
-	}
-	
-	public String getUrl() {
-		return this.url;
-	}
-	
-	public String getBody() {
-		return this.body;
-	}
-
-	public String getVoteCount() {
-		return voteCount;
-	}
-
-	public void setVoteCount(String voteCount) {
-		this.voteCount = voteCount;
-	}
-
-	public String getUserUrl() {
-		return userUrl;
-	}
-
-	public void setUserUrl(String userUrl) {
-		this.userUrl = userUrl;
-	}
-	
-	public boolean isAccepted() {
-		return isAccepted;
-	}
-
-	public void setAccepted(boolean isAccepted) {
-		this.isAccepted = isAccepted;
-	}
-	
-	public boolean isUpVoted() {
-		return isUpVoted;
-	}
-
-	public void setUpVoted(boolean isUpVoted) {
-		this.isUpVoted = isUpVoted;
-	}
-	
 }

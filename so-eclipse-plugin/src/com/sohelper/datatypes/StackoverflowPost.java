@@ -11,21 +11,19 @@ import org.jsoup.select.Elements;
 
 import com.sohelper.exceptions.StackoverflowParserException;
 
+import lombok.Getter;
+
 /**
  * This class is used to construct a post from Stack Overflow.
  */
 public class StackoverflowPost {
 	
-	private String url;
+	@Getter private String url;
 	private Document doc;
 
 	public StackoverflowPost(String url) throws IOException {
 		this.url = url;
 		this.doc = Jsoup.connect(url).userAgent("Mozilla").ignoreHttpErrors(true).timeout(0).get();
-	}
-	
-	public String getUrl() {
-		return this.url;
 	}
 	
 	/**

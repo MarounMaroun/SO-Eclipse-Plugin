@@ -12,6 +12,8 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 
+import lombok.Getter;
+
 /**
  * This page is the "question" page - where the user insert their question.
  * 
@@ -22,8 +24,8 @@ import org.eclipse.swt.widgets.Text;
 public class QuestionPage extends WizardPage {
 	private Text questionText;
 	private Composite container;
-	private boolean isAcceptedOnly = false;
-	private boolean isUpVotedOnly = false;
+	@Getter private boolean isAcceptedOnly = false;
+	@Getter private boolean isUpVotedOnly = false;
 
 	public QuestionPage() {
 		super("Question Page");
@@ -110,13 +112,5 @@ public class QuestionPage extends WizardPage {
 	public IWizardContainer getContainer()
 	{
 		return super.getContainer();
-	}
-	
-	public boolean isAcceptedOnly() {
-		return isAcceptedOnly;
-	}
-	
-	public boolean isUpVotedOnly() {
-		return isUpVotedOnly;
 	}
 }

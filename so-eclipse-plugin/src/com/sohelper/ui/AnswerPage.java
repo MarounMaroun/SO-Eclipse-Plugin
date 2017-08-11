@@ -123,7 +123,8 @@ public class AnswerPage extends WizardPage {
 	 * <li> The link to the answer
 	 */
 	private void setAnswerContent() {
-		if (this.answers == null) {
+		if (this.answers == null || this.answers.isEmpty()) {
+			browser.setText("<html>" + "Oops !! No Anwer Found. Please try to change keywords of question or uncheck applied flags if any." + "</html>");	
 			return;
 		}
 		browser.setText("<html>" + answers.get(answerCount).getBody() + "</html>");		
