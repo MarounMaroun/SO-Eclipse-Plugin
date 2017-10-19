@@ -17,16 +17,16 @@ import com.sohelper.ui.StackoverflowWizard;
  */
 public class SOHandler extends AbstractHandler {
 
-	/**
-	 * the command has been executed, so extract extract the needed information
-	 * from the application context.
-	 */
-	public Object execute(ExecutionEvent event) throws ExecutionException {
-		IWorkbenchWindow window = HandlerUtil.getActiveWorkbenchWindowChecked(event);
-		
-		MyWizardDialog dialog = new MyWizardDialog(window.getShell(), new StackoverflowWizard());
-		dialog.open();
-		
-		return null;
-	}
+    /**
+     * the command has been executed, so extract extract the needed information
+     * from the application context.
+     */
+    public Object execute(ExecutionEvent event) throws ExecutionException {
+        IWorkbenchWindow window = HandlerUtil.getActiveWorkbenchWindowChecked(event);
+        
+        MyWizardDialog dialog = new MyWizardDialog(window.getShell(), new StackoverflowWizard());
+        dialog.open();
+        
+        return null;
+    }
 }

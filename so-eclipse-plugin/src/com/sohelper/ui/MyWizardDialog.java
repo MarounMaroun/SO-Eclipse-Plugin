@@ -29,63 +29,63 @@ import com.sohelper.fetchers.StackoverflowFetcher;
  */
 public class MyWizardDialog extends WizardDialog {
 
-	public MyWizardDialog(Shell parentShell, IWizard newWizard) {
-		super(parentShell, newWizard);
-	}
+    public MyWizardDialog(Shell parentShell, IWizard newWizard) {
+        super(parentShell, newWizard);
+    }
 
-	@Override
-	protected void createButtonsForButtonBar(Composite parent) {
-		super.createButtonsForButtonBar(parent);
+    @Override
+    protected void createButtonsForButtonBar(Composite parent) {
+        super.createButtonsForButtonBar(parent);
 
-		Button finish = getButton(IDialogConstants.NEXT_ID);
-		finish.setText("Get answers!");
-		setButtonLayoutData(finish);
-	}
+        Button finish = getButton(IDialogConstants.NEXT_ID);
+        finish.setText("Get answers!");
+        setButtonLayoutData(finish);
+    }
 
-	@Override
-	protected void nextPressed() {
-		AnswerPage answerPage = (AnswerPage) getCurrentPage().getNextPage();
+    @Override
+    protected void nextPressed() {
+        AnswerPage answerPage = (AnswerPage) getCurrentPage().getNextPage();
 
-		if (getCurrentPage() instanceof QuestionPage) {
-			QuestionPage questionPage = (QuestionPage) getCurrentPage();
+        if (getCurrentPage() instanceof QuestionPage) {
+            QuestionPage questionPage = (QuestionPage) getCurrentPage();
 
-			try {
-				final String question = questionPage.getQuesiton();
-				// if User has not given any input question then do not process and show error dialog box
-				if (question == null || question.trim().isEmpty()) {
-					MessageBox questionErrorBox = new MessageBox(new Shell(), SWT.OK | SWT.ICON_ERROR);
-					questionErrorBox.setMessage("Please enter your question.");
-					questionErrorBox.setText("Error");
-					questionErrorBox.open();
-					return;
-				}
-				questionPage.getContainer().run(false, true, (monitor) ->
-				{					
-					monitor.beginTask("Getting answers from Stack Overflow...", 100);
+            try {
+                final String question = questionPage.getQuesiton();
+                // if User has not given any input question then do not process and show error dialog box
+                if (question == null || question.trim().isEmpty()) {
+                    MessageBox questionErrorBox = new MessageBox(new Shell(), SWT.OK | SWT.ICON_ERROR);
+                    questionErrorBox.setMessage("Please enter your question.");
+                    questionErrorBox.setText("Error");
+                    questionErrorBox.open();
+                    return;
+                }
+                questionPage.getContainer().run(false, true, (monitor) ->
+                {                    
+                    monitor.beginTask("Getting answers from Stack Overflow...", 100);
 
-					try {
-						List<GoogleResult> googleResults = GoogleFetcher.getGoogleResults(question, monitor);
-						List<StackoverflowPost> stackoverflowPosts = StackoverflowFetcher.getStackoverflowPosts(googleResults, monitor);
-						List<StackoverflowAnswer> stackoverflowAnswers = StackoverflowFetcher.getStackoverflowAnswers(stackoverflowPosts, monitor, questionPage);
+                    try {
+                        List<GoogleResult> googleResults = GoogleFetcher.getGoogleResults(question, monitor);
+                        List<StackoverflowPost> stackoverflowPosts = StackoverflowFetcher.getStackoverflowPosts(googleResults, monitor);
+                        List<StackoverflowAnswer> stackoverflowAnswers = StackoverflowFetcher.getStackoverflowAnswers(stackoverflowPosts, monitor, questionPage);
 
-						answerPage.setAnswer(stackoverflowAnswers);
+                        answerPage.setAnswer(stackoverflowAnswers);
 
-					} catch(IOException e) {
-						e.printStackTrace();
-					}
+                    } catch(IOException e) {
+                        e.printStackTrace();
+                    }
 
-					monitor.done();
-				});
-			}
-			catch (InvocationTargetException | InterruptedException e) {
-				e.printStackTrace();
-			}
-		}
-		super.nextPressed();
-	}
+                    monitor.done();
+                });
+            }
+            catch (InvocationTargetException | InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+        super.nextPressed();
+    }
 
-	@Override
-	protected void cancelPressed() {
-		this.close();
-	}
+    @Override
+    protected void cancelPressed() {
+        this.close();
+    }
 }
