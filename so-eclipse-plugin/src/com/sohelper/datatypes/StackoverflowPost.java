@@ -17,8 +17,8 @@ import lombok.Getter;
  * This class is used to construct a post from Stack Overflow.
  */
 public class StackoverflowPost {
-	
-	@Getter private String url;
+
+  @Getter private String url;
 	private Document doc;
 
 	public StackoverflowPost(String url) throws IOException {
@@ -42,7 +42,6 @@ public class StackoverflowPost {
 				// do not add unparsed answers
 			}
 		}
-
-		return soAnswers;
-	}
+    return soAnswers;
+    }
 }
