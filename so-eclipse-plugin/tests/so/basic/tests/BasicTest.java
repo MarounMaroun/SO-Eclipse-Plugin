@@ -27,7 +27,7 @@ public class BasicTest {
         List<GoogleResult> googleResults = GoogleFetcher.getGoogleResults(GOOGLE_QUERY, new NullProgressMonitor());
 
         for (GoogleResult res : googleResults) {
-            assertThat(res.getTitle(), containsString("Stack Overflow"));
+            assertThat(res.getUrl().toString(), containsString("stackoverflow.com"));
         }
     }
     
