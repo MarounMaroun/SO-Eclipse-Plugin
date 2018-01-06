@@ -43,7 +43,7 @@ public class GoogleFetcher {
         for (Element element : elements) {
             monitor.worked(20 / size);
             GoogleResult googleResult = getGoogleResult(element);
-            if (googleResult != null) {
+            if (googleResult != null && googleResult.getUrl().toString().contains("stackoverflow")) {
                 googleResults.add(googleResult);
             }
         }
