@@ -35,4 +35,11 @@ public class GoogleResult {
     public void setSource(String source) {
         this.source = source;
     }
+
+    @Override
+    public String toString() {
+        return "GoogleResult [title=" + title + ", url=" + url + 
+                ", source=" + source + "]";
+    }
+
 }
