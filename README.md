@@ -25,12 +25,6 @@ You can also install it within Eclipse itself:
 * Insert "https://raw.githubusercontent.com/MarounMaroun/SO-Eclipse-Plugin/master/so-eclipse-update-site/site.xml"
 * Click OK and proceed with the installation process
 
-## //TODO
-
-* Include comments
-* Add "top answers" filters
-* Any feature request is more than welcome
-
 ## Running Locally
 
 * Download [Eclipse Plug-in Development Environment (PDE)](http://www.eclipse.org/pde/)
