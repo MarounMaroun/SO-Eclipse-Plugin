@@ -3,6 +3,7 @@ package so.basic.tests;
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
 import java.io.IOException;
@@ -25,7 +26,6 @@ public class BasicTest {
     @Test
     public void testGoogleFetcher() {
         List<GoogleResult> googleResults = GoogleFetcher.getGoogleResults(GOOGLE_QUERY, new NullProgressMonitor());
-
         for (GoogleResult res : googleResults) {
             assertThat(res.getUrl().toString(), containsString("stackoverflow.com"));
         }
@@ -35,7 +35,8 @@ public class BasicTest {
     public void testStackoverflowFetcher() throws IOException {
         StackoverflowPost soPost = new StackoverflowPost(STACK_OVERFLOW_LINK);
         List<StackoverflowAnswer> answers = soPost.getAnswers();
-        
+        assertTrue(answers.size() > 1);
+
         for (StackoverflowAnswer answer : answers) {
             assertFalse(answer.getBody().isEmpty());
             assertFalse(answer.getUser().isEmpty());
