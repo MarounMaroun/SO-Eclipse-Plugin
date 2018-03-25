@@ -2,12 +2,12 @@
 <feature
       id="com.so.eclipse.helper"
       label="SO Eclipse Helper"
-      version="1.0.5"
+      version="1.0.6"
       provider-name="Maroun Maroun"
       plugin="com.so.eclipse.helper">
 
    <description url="https://github.com/MarounMaroun/SO-Eclipse-Plugin">
-      This version contains a fix to a critical bug: No answers were retrieved
+      This version contains a fix for empty answeres deu to Stack Overflow HTML structure change.
    </description>
 
    <license url="https://opensource.org/licenses/MIT">
@@ -40,7 +40,7 @@ THE SOFTWARE.
          id="com.so.eclipse.helper"
          download-size="0"
          install-size="0"
-         version="1.0.5"
+         version="1.0.6"
          unpack="false"/>
 
 </feature>
