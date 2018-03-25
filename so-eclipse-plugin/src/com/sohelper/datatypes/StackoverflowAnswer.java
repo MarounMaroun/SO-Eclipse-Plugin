@@ -35,7 +35,7 @@ public class StackoverflowAnswer {
                 this.isUpVoted = false;
             }
             
-            Element userElement = element.select("table.fw").select("div.user-info").last().select("a").last();
+            Element userElement = element.select("div.post-signature").last().select("div.user-info").last().select("a").last();
             this.user = userElement.text();
             this.userUrl = "stackoverflow.com" + userElement.attr("href");
                         
