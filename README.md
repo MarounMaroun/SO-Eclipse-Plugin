@@ -11,7 +11,7 @@ Right-click on the editor, then select "Ask me" or press ALT + Q (default key-bi
 
 The "SO ready to help" dialog should appear:
 
-![SO ready to help](/images/example.gif)
+![SO ready to help](/.github/images/example.gif)
 
 ## Installation
 
